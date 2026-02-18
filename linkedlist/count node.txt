@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node * link;
+};
+
+void printlist(struct Node * head){
+    struct Node * ptr = head;
+    
+    while(ptr != NULL){
+        printf("%d -> ", ptr->data);
+        ptr = ptr->link;
+    }
+    printf("NULL\n");
+}
+
+int countnodes(struct Node* head){
+    int count = 0;
+    struct Node* Temp = head;
+    
+    while(Temp != NULL){      
+        count++;
+        Temp = Temp->link;
+    }
+    return count;
+}
+
+// INSERTION AT BEGINNING 
+struct Node* insertfirst(struct Node* head, int value)
+{
+    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+    newNode->data = value;   
+    newNode->link = head;
+    return newNode;
+}
+
+int main() {
+
+    struct Node * head, *Second, *Third;
+    
+    head = (struct Node*)malloc(sizeof(struct Node));
+    Second = (struct Node*)malloc(sizeof(struct Node));
+    Third = (struct Node*)malloc(sizeof(struct Node));
+    
+    head->data = 10;
+    head->link = Second;
+    
+    Second->data = 45;        
+    Second->link = Third;
+    
+    Third->data = 60;       
+    Third->link = NULL;
+    
+    printf("Before Insertion\n");
+    printlist(head);
+    
+    head = insertfirst(head, 30);
+    
+    printf("After Insertion\n");
+    printlist(head);
+    
+    printf("Number of nodes: %d\n", countnodes(head));
+
+    return 0;
+}
