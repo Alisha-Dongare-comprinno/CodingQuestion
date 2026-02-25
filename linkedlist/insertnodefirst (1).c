@@ -6,7 +6,7 @@ struct Node{
     struct Node* link;
 };
 
-struct Node* addfirst(struct Node* head, int data);  // function declaration
+struct Node* addfirst(struct Node* head, int data); 
 
 int main(){
     struct Node* head = (struct Node*)malloc(sizeof(struct Node));
@@ -37,3 +37,4 @@ struct Node* addfirst(struct Node* head, int data)
     ptr->link = head;
     return ptr;
 }
+
